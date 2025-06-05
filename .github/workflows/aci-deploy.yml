@@ -21,7 +21,7 @@ jobs:
       uses: azure/docker-login@v1
       with:
         login-server: ${{ secrets.ACR_NAME }}.azurecr.io
-        username: ${{ secrets.ACR_NAME }}
+        username: ${{ secrets.ACR_USERNAME }}
         password: ${{ secrets.ACR_PASSWORD }}
 
     - name: Build and push Docker image
@@ -38,3 +38,6 @@ jobs:
         name: demo-azure-container
         location: eastus
         ports: 80
+        registry-login-server: ${{ secrets.ACR_NAME }}.azurecr.io
+        registry-username: ${{ secrets.ACR_USERNAME }}
+        registry-password: ${{ secrets.ACR_PASSWORD }}
